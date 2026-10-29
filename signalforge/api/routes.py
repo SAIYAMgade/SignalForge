@@ -131,7 +131,7 @@ def trigger_pipeline_run(pipeline_id: str, db: Session = Depends(get_db)):
     # Load active data quality rules for this target table
     rules_entities = db.query(DataQualityRule).filter(
         DataQualityRule.dataset_name == pipeline.target_table,
-        DataQualityRule.is_active == True
+        DataQualityRule.is_active.is_(True)
     ).all()
 
     from signalforge.quality.rules import QualityRule, RuleSeverity, RuleType
@@ -298,7 +298,7 @@ def trigger_failure_scenario(payload: TriggerScenarioRequest, db: Session = Depe
 @router.get("/api/metrics/summary", response_model=SystemSummaryResponse, tags=["Observability"])
 def get_operational_summary(db: Session = Depends(get_db)):
     total_pipelines = db.query(func.count(Pipeline.id)).scalar() or 0
-    active_pipelines = db.query(func.count(Pipeline.id)).filter(Pipeline.is_active == True).scalar() or 0
+    active_pipelines = db.query(func.count(Pipeline.id)).filter(Pipeline.is_active.is_(True)).scalar() or 0
 
     total_runs = db.query(func.count(PipelineRun.id)).scalar() or 0
     successful_runs = db.query(func.count(PipelineRun.id)).filter(PipelineRun.status == "COMPLETED").scalar() or 0

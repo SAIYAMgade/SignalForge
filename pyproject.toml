@@ -39,5 +39,9 @@ python_files = ["test_*.py"]
 asyncio_mode = "auto"
 
 [tool.ruff]
-line-length = 100
+line-length = 120
 target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F"]
+ignore = ["E501", "E402", "F401", "F841"]

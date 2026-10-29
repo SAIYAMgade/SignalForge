@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-10-29T07:30:35Z",
-  "batch_size": 1000,
+  "timestamp": "2026-10-29T07:56:22Z",
+  "batch_size": 500,
   "metrics": {
-    "execution_duration_sec": 3.261,
-    "records_loaded": 1000,
-    "throughput_records_per_sec": 306.6,
-    "peak_memory_mb": 4.27,
+    "execution_duration_sec": 1.862,
+    "records_loaded": 500,
+    "throughput_records_per_sec": 268.5,
+    "peak_memory_mb": 2.77,
     "duplicate_records_created_on_rerun": 0,
     "idempotency_verified": true
   },

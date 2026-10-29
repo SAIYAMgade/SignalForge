@@ -8,13 +8,13 @@ import pandas as pd
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
+# Return type: (DataFrame, new_checkpoint_value)
+Tuple_Data = tuple[pd.DataFrame, Optional[str]]
+
 class BaseExtractor(ABC):
     @abstractmethod
     def extract(self, checkpoint_value: Optional[str] = None) -> Tuple_Data:
         pass
-
-# Return type: (DataFrame, new_checkpoint_value)
-Tuple_Data = tuple[pd.DataFrame, Optional[str]]
 
 class CSVExtractor(BaseExtractor):
     def __init__(self, file_path: str, delimiter: str = ",", cursor_column: Optional[str] = None):

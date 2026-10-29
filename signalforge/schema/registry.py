@@ -44,7 +44,7 @@ class SchemaRegistry:
             self.db.query(SchemaVersion)
             .filter(
                 SchemaVersion.dataset_name == dataset_name,
-                SchemaVersion.is_active == True
+                SchemaVersion.is_active.is_(True)
             )
             .first()
         )
